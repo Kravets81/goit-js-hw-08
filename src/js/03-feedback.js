@@ -6,7 +6,7 @@ const LOCALSTORAGE_KEY = 'feedback-form-state';
 refForm.addEventListener('input', throttle(onTextFormInput, 500));
 refForm.addEventListener('submit', onFormSubmit);
 
-const formData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
+let formData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
 const { email, message } = refForm;
 
 reloadPage();
@@ -33,5 +33,5 @@ function onFormSubmit(event) {
 
   localStorage.removeItem(LOCALSTORAGE_KEY);
   event.currentTarget.reset();
-  dataForm = {};
+  formData = {};
 }
